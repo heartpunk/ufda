@@ -65,6 +65,7 @@
 - remove hard bazel dependency for at least end users; maybe leave it for wruh/ayxg devs
 - python/lean packages
 - readme updates w/like a rough outline of the most important directories/declarations maybe
+- TODO after release, reflect the component-specific roadmap material and companion docs in the relevant repos (e.g. the UTEM walkthrough in UTEM), with links both ways so the context is findable from either place.
 - an issue for each of the thingers in the two tables below
 - self hosting for primitive ops, tl;dr: some generic symbolic transition systems encoding all of ints, floats, bitvecs, and bools. also needs to be capable of doing strings and arbitrary datatypes
 - review the existing Lean migration: [ayxg PR #1](https://github.com/heartpunk/ayxg/pull/1) removes the deprecated wrapper and preserves transition labels; [wruh PR #2](https://github.com/heartpunk/wruh/pull/2), branch `bisim-flake-alignment`, ports extraction and its bisimulation proof to that interface.[^migration]
