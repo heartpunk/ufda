@@ -177,6 +177,16 @@ exec nix develop --no-write-lock-file "$flake_root" --command "$bash_path" -c '
   fi
 
   case "$mode" in
+    wruh-python)
+      : "${WRUH_AYXG_SOURCE:?WRUH development shell must select its AYXG source}"
+      if [[ ! -d "$WRUH_AYXG_SOURCE/python/ayxg" ]]; then
+        printf "ufda-component-cli: WRUH AYXG Python source is missing: %s\n" "$WRUH_AYXG_SOURCE" >&2
+        exit 2
+      fi
+      cd "$caller_dir"
+      export PYTHONPATH="$flake_root:$WRUH_AYXG_SOURCE/python${PYTHONPATH:+:$PYTHONPATH}"
+      exec python -m "$target" "$@"
+      ;;
     lake)
       cd "$worktree"
       lake build "$target" >&2

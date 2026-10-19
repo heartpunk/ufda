@@ -130,3 +130,37 @@ cmp -s "$tmp_root/expected-nix-prefix" "$tmp_root/actual-nix-prefix" || {
   exit 1
 }
 printf '%s\n' 'component-cli contract: component own flake passed'
+
+# Exercise the Python launch path with a shell-selected AYXG dependency.
+mkdir -p "$tmp_root/selected ayxg/python/ayxg"
+cat > "$tmp_root/bin/python" <<'STUB'
+#!/usr/bin/env bash
+set -euo pipefail
+printf '%s\0' "$PYTHONPATH" > "$PYTHONPATH_CAPTURE"
+printf '%s\0' "$PWD" "$@" > "$CAPTURE_FILE"
+cat > "$STDIN_CAPTURE"
+printf 'stub stdout\n'
+printf 'stub stderr\n' >&2
+exit "${STUB_EXIT:-0}"
+STUB
+chmod +x "$tmp_root/bin/python"
+export WRUH_AYXG_SOURCE="$tmp_root/selected ayxg"
+export PYTHONPATH="$tmp_root/inherited-python-path"
+export PYTHONPATH_CAPTURE="$tmp_root/pythonpath-capture"
+for module in extractor.extract_cli extractor.compose_cli; do
+  export STUB_EXIT=37
+  set +e
+  bash "$repo_root/scripts/component-cli" \
+    contract rev-test "$tmp_root/source" cache-test \
+    wruh-python "$module" '' "$bash_path" -- \
+    --help '' 'relative/input file.json' \
+    < "$tmp_root/input-args" > "$tmp_root/actual-stdout" 2> "$tmp_root/actual-stderr"
+  wrapper_status=$?
+  set -e
+  [[ $wrapper_status -eq 37 ]] || exit 1
+  assert_capture -m "$module" --help '' 'relative/input file.json'
+  assert_streams "$tmp_root/input-args"
+  printf '%s\0' "$new_cache/flake:$WRUH_AYXG_SOURCE/python:$PYTHONPATH" > "$tmp_root/expected-pythonpath"
+  cmp -s "$tmp_root/expected-pythonpath" "$PYTHONPATH_CAPTURE"
+done
+printf '%s\n' 'component-cli contract: WRUH modules, selected AYXG, paths, streams, and exit status passed'

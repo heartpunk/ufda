@@ -64,13 +64,16 @@
             (mkCli { name = "fuzz_model"; component = "ixyk";
               mode = "bazel-binary"; target = "//extractor:fuzz_model";
               binaryPath = "bazel-bin/extractor/fuzz_model"; })
-            # The extraction CLI now lives in IXYK, not the WRUH proof package.
             (mkCli { name = "extract_model"; component = "ixyk";
               mode = "bazel-binary"; target = "//extractor:extract_model";
               binaryPath = "bazel-bin/extractor/extract_model"; })
             (mkCli { name = "reapi_smoke"; component = "ixyk";
               mode = "python-clean"; target = "tools/reapi_smoke.py";
               nixShim = nixNoWriteLock; })
+            (mkCli { name = "wruh-extract"; component = "wruh";
+              mode = "wruh-python"; target = "extractor.extract_cli"; })
+            (mkCli { name = "wruh-compose"; component = "wruh";
+              mode = "wruh-python"; target = "extractor.compose_cli"; })
             (mkCli { name = "bazelw"; component = "wruh";
               mode = "bazel"; target = "scripts/bazelw"; })
             (mkCli { name = "tinymemory-bounded-oracle"; component = "tmvm";

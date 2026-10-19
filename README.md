@@ -28,12 +28,28 @@ AYXG and WRUH select the existing bisimulation PR heads.
 
 ## Commands
 
+- `wruh-extract` (WRUH): extract a binary into an STS bundle.
+- `wruh-compose` (WRUH): compose paths from an extracted STS bundle.
 - `ixyk-dev-check`, `ixyk-golden-check`, `ixyk-differential-eval`
 - `fuzz_model`, `extract_model`, `reapi_smoke` (IXYK)
 - `bazelw` (WRUH)
 - `tinymemory-bounded-oracle` (TMVM)
 
-The `extract_model` Bazel target is supplied by IXYK.
+`wruh-extract` runs WRUH's `python -m extractor.extract_cli`;
+`wruh-compose` runs `python -m extractor.compose_cli`. Both use WRUH's own
+development shell and the AYXG source selected by that shell. Arguments pass
+through unchanged, and relative input/output paths are resolved from your
+current directory.
+
+```sh
+nix develop
+wruh-extract --help
+wruh-compose --help
+wruh-extract --artifact ./program --root function_name --output ./bundle.json
+wruh-compose --input ./bundle.json --output ./paths.json
+```
+
+The separate `extract_model` command runs IXYK's Bazel target of that name.
 
 ## Repository access
 
@@ -45,3 +61,7 @@ at their pinned commits; using the suite requires GitHub access to both reposito
 Run `bash tests/component-cli-contract.sh` for the existing wrapper behavior
 checks, and `nix flake check --no-build --no-write-lock-file` to evaluate the
 suite. These cover wrapper behavior and flake evaluation.
+
+On Linux, `nix develop --command bash tests/wruh-cli-smoke.sh` exercises both
+WRUH help commands, extracts a small compiled function, and composes the
+resulting bundle. It also checks relative paths containing spaces.
