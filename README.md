@@ -1,5 +1,23 @@
 # UFDA
 
+## wat it is and why from da authors perspective
+
+ever been tryin to understand a program an ur like "omfg this is so unnecessarily hard!!! uff da!!!!!" yea? me too! (ok not really[^name] uhm but close enough)
+
+anyway the stuff in the ufda "suite" (rly just a repo that pins a few other repos that are separated for dubious reasons that i don't feel like revisiting yet) is meant to help solve that kinda problem.
+
+- ayxg: a way of modeling arbitrary computation w/no ambiguities that is solver and proof friendly. basically fancy flowcharts, honestly. the edges (lines) are the rules that determine what state update happens in which condition, and the nodes (boxes/circles/shapes) are the symbolic/abstract states. in slightly more formal terms this is a symbolic transition system (STS) datatype and execution library in python and lean.
+  - they're smt solver friendly already
+  - there's a lean embedding so u can do proofs tho its not gonna be the easiest quite yet, and we haven't tried either tbqh
+  - can v soon integrate w/vmt-lib and other kinds of solvers so all these models help bridge u to as much other literature/formalisms as possible
+- wruh: extracts models of binaries into ayxg STSes.
+- utem: specializes fixed code or workload data through an ayxg model of an interpreter, compiler, vm, or kernel by way of a reference first futamura projector we've implemented and proved correct in lean.
+- ixyk: a wruh like that is focused on reusable models per ISA mnemnonic. there's work to do to unify these and make the duality/tension between approaches apparent, and also allow for weirder mixed modes as well.
+
+tl;dr: ufda plus some other planned stuff in the roadmap (TODO linkify) should, i think, in principle, *i hope*, be enough to get us all the way to first class and eventually even high level semantics for p much everything, even when we only have low level implementations.
+
+## boring ai slop. factually useful context but. like. up to u if u want that?
+
 The UFDA suite brings together IXYK, WRUH, AYXG, UTEM, and TMVM (TinyMemory) with pinned
 sources and development commands.
 
@@ -65,3 +83,5 @@ suite. These cover wrapper behavior and flake evaluation.
 On Linux, `nix develop --command bash tests/wruh-cli-smoke.sh` exercises both
 WRUH help commands, extracts a small compiled function, and composes the
 resulting bundle. It also checks relative paths containing spaces.
+
+[^name]: ufda only ended up being the name bcz something like umfa was generated as a shortcode and i was like teehee that's close to ufda which is like uff da and that made me decide to construct this white lie about having said uff da when i rly do not say such things i just grew up hearing about ppl saying it when my dad was a kid that is all
