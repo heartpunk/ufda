@@ -6,7 +6,6 @@
     wruh.url = "github:heartpunk/wruh/16d77877512d97fad0622a7a6ac401cf8b2dd538";
     ayxg.url = "github:heartpunk/ayxg/5106df06d92620da810c325b8779ce97a14f7f0e";
     utem.url = "git+ssh://git@github.com/heartpunk/utem.git?rev=88efa92e1fe4c0553f8eba43dec198b19ebdeb31";
-    tmvm.url = "git+ssh://git@github.com/heartpunk/tmvm.git?rev=7b2935541d5537c09db7354daee6f98ff74a265e";
   };
 
   outputs = inputs:
@@ -16,10 +15,9 @@
         wruh = "16d77877512d97fad0622a7a6ac401cf8b2dd538";
         ayxg = "5106df06d92620da810c325b8779ce97a14f7f0e";
         utem = "88efa92e1fe4c0553f8eba43dec198b19ebdeb31";
-        tmvm = "7b2935541d5537c09db7354daee6f98ff74a265e";
       };
       sources = builtins.mapAttrs (_: source: toString source) {
-        inherit (inputs) ixyk wruh ayxg utem tmvm;
+        inherit (inputs) ixyk wruh ayxg utem;
       };
       systems = [ "aarch64-darwin" "x86_64-linux" ];
       mkShell = system:
@@ -76,8 +74,6 @@
               mode = "wruh-python"; target = "extractor.compose_cli"; })
             (mkCli { name = "bazelw"; component = "wruh";
               mode = "bazel"; target = "scripts/bazelw"; })
-            (mkCli { name = "tinymemory-bounded-oracle"; component = "tmvm";
-              mode = "lake"; target = "tinymemory-bounded-oracle"; })
           ];
         in pkgs.mkShell {
           packages = [ pkgs.bash pkgs.nix pkgs.git ] ++ componentClis;

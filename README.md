@@ -18,7 +18,7 @@ tl;dr: ufda plus some other planned stuff in the roadmap (TODO linkify) should, 
 
 ## boring ai slop. factually useful context but. like. up to u if u want that?
 
-The UFDA suite brings together IXYK, WRUH, AYXG, UTEM, and TMVM (TinyMemory) with pinned
+The UFDA suite brings together IXYK, WRUH, AYXG, and UTEM with pinned
 sources and development commands.
 
 Run `nix develop` to enter the suite environment. The wrappers stage immutable
@@ -27,7 +27,7 @@ source snapshots and separate writable build directories under
 Each component flake pins its own dependencies, including IFRL as its
 dependency/toolchain provider. UFDA preserves those pins. Each command enters
 its component's own development shell.
-Use `nix develop .#tmvm` (or another component name) to enter that shell directly.
+Use `nix develop .#wruh` (or another component name) to enter that shell directly.
 `nix eval --json .#lib.pins` prints the selected component revisions.
 
 ## Pins
@@ -42,7 +42,6 @@ AYXG and WRUH select the existing bisimulation PR heads.
 | WRUH | `16d77877512d97fad0622a7a6ac401cf8b2dd538` | PR #2 |
 | AYXG | `5106df06d92620da810c325b8779ce97a14f7f0e` | PR #1 |
 | UTEM | `88efa92e1fe4c0553f8eba43dec198b19ebdeb31` | main tip |
-| TMVM | `7b2935541d5537c09db7354daee6f98ff74a265e` | rebuilt mainline |
 
 ## Commands
 
@@ -51,7 +50,6 @@ AYXG and WRUH select the existing bisimulation PR heads.
 - `ixyk-dev-check`, `ixyk-golden-check`, `ixyk-differential-eval`
 - `fuzz_model`, `extract_model`, `reapi_smoke` (IXYK)
 - `bazelw` (WRUH)
-- `tinymemory-bounded-oracle` (TMVM)
 
 `wruh-extract` runs WRUH's `python -m extractor.extract_cli`;
 `wruh-compose` runs `python -m extractor.compose_cli`. Both use WRUH's own
@@ -71,8 +69,8 @@ The separate `extract_model` command runs IXYK's Bazel target of that name.
 
 ## Repository access
 
-UFDA, TMVM, and UTEM are currently private. TMVM and UTEM are fetched over SSH
-at their pinned commits; using the suite requires GitHub access to both repositories.
+UFDA and UTEM are currently private. UTEM is fetched over SSH
+at its pinned commit; using the suite requires GitHub access to UTEM.
 
 ## Checks
 
