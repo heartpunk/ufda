@@ -6,6 +6,11 @@ Run provenance and artifact-recovery status: [CPython extraction attempt counts]
 
 ## `extract_all.py`
 
+Until these resume checks are implemented, use a separate output directory for each exact binary; automatic resume assumes intact ledgers.
+
+- TODO bind resume state to the artifact SHA-256 and reject mismatches before reusing ledgers or overwriting metadata. [Review](https://github.com/heartpunk/ufda/pull/1#discussion_r4319712404).
+- TODO safely recover a truncated final ledger record before appending again, retry the affected function, and reject corruption in earlier records. [Review](https://github.com/heartpunk/ufda/pull/1#discussion_r4319712412).
+
 ```python
 #!/usr/bin/env python3
 """Resumable, failure-tolerant Wruh extraction of every sized function symbol."""
@@ -196,6 +201,8 @@ if __name__ == "__main__":
 `vex_decode_sweep.py` linearly visits executable ELF sections through angr/VEX without constructing a `SimState`. If a larger VEX window fails, it obtains an instruction boundary from Capstone or `objdump`, retries VEX on exactly that instruction, and records a gap only if the retry also fails. Its report counts instruction sites, a different unit from the function-extraction failure table.
 
 ## `vex_decode_sweep.py`
+
+- TODO use mapped-to-linked address translation for the `objdump` fallback and reported `linked_address`, including binaries with nonzero linked bases. [Review](https://github.com/heartpunk/ufda/pull/1#discussion_r4319712398).
 
 ```python
 #!/usr/bin/env python3
