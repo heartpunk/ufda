@@ -46,29 +46,6 @@
         "type": "github"
       }
     },
-    "angr-nix_3": {
-      "inputs": {
-        "nixpkgs": [
-          "tmvm",
-          "ifrl",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789637756,
-        "narHash": "sha256-saq8P8fhEy1erRoOou+Clrv6gea2LzvHOubsPnRyDes=",
-        "owner": "heartpunk",
-        "repo": "angr-nix",
-        "rev": "b8113fce638c08269c9965a67c330cb33e002e29",
-        "type": "github"
-      },
-      "original": {
-        "owner": "heartpunk",
-        "ref": "experiment/ixyk-angr-10",
-        "repo": "angr-nix",
-        "type": "github"
-      }
-    },
     "angr-nix_4": {
       "inputs": {
         "nixpkgs": [
@@ -250,24 +227,6 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib_3"
-      },
-      "locked": {
-        "lastModified": 1765835352,
-        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "a34fae9c08a15ad73f295041fec82323541400a9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "flake-parts_4": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_4"
@@ -402,28 +361,6 @@
         "type": "github"
       }
     },
-    "ifrl_3": {
-      "inputs": {
-        "angr-nix": "angr-nix_3",
-        "lean4-nix": "lean4-nix_3",
-        "nixpkgs": "nixpkgs_3",
-        "rust-overlay": "rust-overlay_3"
-      },
-      "locked": {
-        "lastModified": 1791828682,
-        "narHash": "sha256-hlNDNuLC882wfIQCXFaoZ2AYvP+56lPcxWx0WwzBfxY=",
-        "ref": "refs/heads/main",
-        "rev": "c69a322ec903672a2def1841be661eb6a339c89b",
-        "revCount": 13,
-        "type": "git",
-        "url": "ssh://git@github.com/heartpunk/ifrl.git"
-      },
-      "original": {
-        "rev": "c69a322ec903672a2def1841be661eb6a339c89b",
-        "type": "git",
-        "url": "ssh://git@github.com/heartpunk/ifrl.git"
-      }
-    },
     "ifrl_4": {
       "inputs": {
         "angr-nix": "angr-nix_4",
@@ -538,29 +475,6 @@
         "type": "github"
       }
     },
-    "lean4-nix_3": {
-      "inputs": {
-        "flake-parts": "flake-parts_3",
-        "nixpkgs": [
-          "tmvm",
-          "ifrl",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791479610,
-        "narHash": "sha256-o9izTy5h4lNu8jSVisbMgc/whwf104Y6evqLmVBu1ig=",
-        "owner": "lenianiva",
-        "repo": "lean4-nix",
-        "rev": "0fca9460b735b6c48d48de5d526b656f4607fd8f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lenianiva",
-        "repo": "lean4-nix",
-        "type": "github"
-      }
-    },
     "lean4-nix_4": {
       "inputs": {
         "flake-parts": "flake-parts_4",
@@ -653,21 +567,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib_3": {
-      "locked": {
-        "lastModified": 1765674936,
-        "narHash": "sha256-k00uTP4JNfmejrCLJOwdObYC9jHRrr/5M/a/8L2EIdo=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "2075416fcb47225d9b68ac469a5c4801a9c4dd85",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib_4": {
       "locked": {
         "lastModified": 1765674936,
@@ -699,22 +598,6 @@
       }
     },
     "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1783776592,
-        "narHash": "sha256-UgCQzxeWI75XM8G+hPrPh+MKzEPjG3SpAj7dtqSbksA=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
       "locked": {
         "lastModified": 1783776592,
         "narHash": "sha256-UgCQzxeWI75XM8G+hPrPh+MKzEPjG3SpAj7dtqSbksA=",
@@ -766,7 +649,6 @@
       "inputs": {
         "ayxg": "ayxg",
         "ixyk": "ixyk",
-        "tmvm": "tmvm",
         "utem": "utem",
         "wruh": "wruh"
       }
@@ -798,29 +680,6 @@
       "inputs": {
         "nixpkgs": [
           "ixyk",
-          "ifrl",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1785216007,
-        "narHash": "sha256-KrGilCiFVxEQOaBD3TODhklZzE7uICQvqsBWgycIABA=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "8ec8a5a41f8d8244e672829c9cd705416139d3f0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "8ec8a5a41f8d8244e672829c9cd705416139d3f0",
-        "type": "github"
-      }
-    },
-    "rust-overlay_3": {
-      "inputs": {
-        "nixpkgs": [
-          "tmvm",
           "ifrl",
           "nixpkgs"
         ]
@@ -884,34 +743,6 @@
         "repo": "rust-overlay",
         "rev": "8ec8a5a41f8d8244e672829c9cd705416139d3f0",
         "type": "github"
-      }
-    },
-    "tmvm": {
-      "inputs": {
-        "ifrl": "ifrl_3",
-        "nixpkgs": [
-          "tmvm",
-          "ifrl",
-          "nixpkgs"
-        ],
-        "rust-overlay": [
-          "tmvm",
-          "ifrl",
-          "rust-overlay"
-        ]
-      },
-      "locked": {
-        "lastModified": 1792434500,
-        "narHash": "sha256-z/n4Vz8Qnv4ramb3TQHa5ekN1Aam0LPZiv3+gGc7iqg=",
-        "rev": "7b2935541d5537c09db7354daee6f98ff74a265e",
-        "revCount": 2,
-        "type": "git",
-        "url": "ssh://git@github.com/heartpunk/tmvm.git"
-      },
-      "original": {
-        "rev": "7b2935541d5537c09db7354daee6f98ff74a265e",
-        "type": "git",
-        "url": "ssh://git@github.com/heartpunk/tmvm.git"
       }
     },
     "utem": {
