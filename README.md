@@ -14,7 +14,7 @@ anyway the stuff in the ufda "suite" (rly just a repo that pins a few other repo
 - utem: specializes fixed code or workload data through an ayxg model of an interpreter, compiler, vm, or kernel by way of a reference first futamura projector we've implemented and proved correct in lean.
 - ixyk: a wruh like that is focused on reusable models per ISA mnemnonic. there's work to do to unify these and make the duality/tension between approaches apparent, and also allow for weirder mixed modes as well.
 
-tl;dr: ufda plus some other planned stuff in the roadmap (TODO linkify) should, i think, in principle, *i hope*, be enough to get us all the way to first class and eventually even high level semantics for p much everything, even when we only have low level implementations.
+tl;dr: ufda plus some other planned stuff in the [roadmap](docs/roadmap.md) should, i think, in principle, *i hope*, be enough to get us all the way to first class and eventually even high level semantics for p much everything, even when we only have low level implementations.
 
 ## boring ai slop. factually useful context but. like. up to u if u want that?
 
