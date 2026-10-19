@@ -1,0 +1,214 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 8 ]]; then
+  printf '%s\n' 'ufda-component-cli: incomplete wrapper configuration' >&2
+  exit 2
+fi
+
+component=$1
+revision=$2
+source_path=$3
+cache_key=$4
+mode=$5
+target=$6
+binary_path=$7
+bash_path=$8
+shift 8
+
+dep_destinations=()
+dep_sources=()
+nix_shim=
+while (($#)); do
+  case $1 in
+    --dep)
+      if [[ $# -lt 3 ]]; then
+        printf '%s\n' 'ufda-component-cli: incomplete dependency mapping' >&2
+        exit 2
+      fi
+      dep_destinations+=("$2")
+      dep_sources+=("$3")
+      shift 3
+      ;;
+    --nix-shim)
+      if [[ $# -lt 2 ]]; then
+        printf '%s\n' 'ufda-component-cli: missing Nix shim path' >&2
+        exit 2
+      fi
+      nix_shim=$2
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      printf 'ufda-component-cli: unexpected wrapper argument: %s\n' "$1" >&2
+      exit 2
+      ;;
+  esac
+done
+
+caller_dir=$(pwd -L)
+if [[ -n ${XDG_CACHE_HOME:-} ]]; then
+  cache_home=$XDG_CACHE_HOME
+elif [[ -n ${HOME:-} ]]; then
+  cache_home="$HOME/.cache"
+else
+  printf '%s\n' 'ufda-component-cli: set HOME or XDG_CACHE_HOME for the pinned source cache' >&2
+  exit 2
+fi
+
+cache_parent="$cache_home/ufda/component-clis/$component"
+cache_schema=readonly-flake-v2
+cache_root="$cache_parent/$cache_schema-$cache_key"
+ready_file="$cache_root/.ready"
+lock_dir="$cache_parent/.$cache_schema-$cache_key.lock"
+flake_root="$cache_root/flake"
+worktree="$cache_root/worktree"
+cache_marker="$component:$revision:$cache_schema:$cache_key"
+
+if [[ -f $ready_file ]]; then
+  read -r ready_key < "$ready_file" || true
+  if [[ $ready_key != "$cache_marker" ]]; then
+    printf 'ufda-component-cli: invalid cache marker at %s\n' "$ready_file" >&2
+    exit 2
+  fi
+else
+  mkdir -p "$cache_parent"
+  lock_owned=0
+  for attempt in {1..1500}; do
+    if [[ -f $ready_file ]]; then
+      break
+    fi
+    if mkdir "$lock_dir" 2>/dev/null; then
+      lock_owned=1
+      break
+    fi
+    if [[ -f "$lock_dir/pid" ]]; then
+      lock_pid=
+      read -r lock_pid < "$lock_dir/pid" || true
+      if [[ $lock_pid =~ ^[0-9]+$ ]] && ! kill -0 "$lock_pid" 2>/dev/null; then
+        rm -f "$lock_dir/pid"
+        rmdir "$lock_dir" 2>/dev/null || true
+        continue
+      fi
+    fi
+    sleep 0.2
+  done
+
+  if [[ ! -f $ready_file && $lock_owned -eq 0 ]]; then
+    printf 'ufda-component-cli: timed out waiting for source cache %s\n' "$cache_root" >&2
+    exit 2
+  fi
+
+  if [[ ! -f $ready_file ]]; then
+    printf '%s\n' "$$" > "$lock_dir/pid"
+    stage_dir=
+    cleanup_cache_stage() {
+      status=$?
+      trap - EXIT
+      if [[ -n ${stage_dir:-} && -d $stage_dir ]]; then
+        rm -rf "$stage_dir"
+      fi
+      if [[ ${lock_owned:-0} -eq 1 ]]; then
+        rm -f "$lock_dir/pid"
+        rmdir "$lock_dir" 2>/dev/null || true
+      fi
+      exit "$status"
+    }
+    trap cleanup_cache_stage EXIT
+
+    if [[ -e $cache_root ]]; then
+      printf 'ufda-component-cli: incomplete generated cache exists at %s; remove it to rebuild\n' "$cache_root" >&2
+      exit 2
+    fi
+    stage_dir=$(mktemp -d "$cache_parent/.$cache_schema-$cache_key.stage.XXXXXX")
+
+    copy_checkout() {
+      local destination=$1
+      local index
+      mkdir -p "$destination"
+      cp -R "$source_path"/. "$destination"/
+      for ((index = 0; index < ${#dep_sources[@]}; index++)); do
+        local dep_destination="$destination/${dep_destinations[$index]}"
+        mkdir -p "$dep_destination"
+        cp -R "${dep_sources[$index]}"/. "$dep_destination"/
+      done
+      find "$destination" -type d -exec chmod u+rwx {} +
+      find "$destination" -type f -exec chmod u+rw {} +
+    }
+
+    copy_checkout "$stage_dir/flake"
+    copy_checkout "$stage_dir/worktree"
+    find "$stage_dir/flake" -type d -exec chmod a-w {} +
+    find "$stage_dir/flake" -type f -exec chmod a-w {} +
+    printf '%s\n' "$cache_marker" > "$stage_dir/.ready"
+    mv "$stage_dir" "$cache_root"
+    stage_dir=
+    rm -f "$lock_dir/pid"
+    rmdir "$lock_dir"
+    lock_owned=0
+    trap - EXIT
+  fi
+fi
+
+if [[ ! -f $ready_file || ! -d $flake_root || ! -d $worktree ]]; then
+  printf 'ufda-component-cli: source cache is incomplete at %s\n' "$cache_root" >&2
+  exit 2
+fi
+
+cd "$flake_root"
+exec nix develop --no-write-lock-file "$flake_root" --command "$bash_path" -c '
+  set -euo pipefail
+  flake_root=$1
+  worktree=$2
+  mode=$3
+  target=$4
+  binary_path=$5
+  caller_dir=$6
+  nix_shim=$7
+  bash_path=$8
+  shift 8
+
+  if [[ -n "$nix_shim" ]]; then
+    PATH="$nix_shim:$PATH"
+    export PATH
+  fi
+
+  case "$mode" in
+    lake)
+      cd "$worktree"
+      lake build "$target" >&2
+      cd "$caller_dir"
+      exec "$worktree/.lake/build/bin/$target" "$@"
+      ;;
+    python-clean)
+      cd "$caller_dir"
+      python_path="$flake_root"
+      if [[ -d "$flake_root/.dependencies/ayxg/python" ]]; then
+        python_path="$python_path:$flake_root/.dependencies/ayxg/python"
+      fi
+      export PYTHONPATH="$python_path${PYTHONPATH:+:$PYTHONPATH}"
+      exec python "$flake_root/$target" "$@"
+      ;;
+    bazel-binary)
+      cd "$worktree"
+      bazel build --jobs=1 --lockfile_mode=error "$target" >&2
+      cd "$caller_dir"
+      exec "$worktree/$binary_path" "$@"
+      ;;
+    component-command)
+      cd "$worktree"
+      exec "$target" "$@"
+      ;;
+    bazel)
+      cd "$worktree"
+      exec "$bash_path" "$worktree/$target" "$@"
+      ;;
+    *)
+      printf "ufda-component-cli: unknown wrapper mode: %s\n" "$mode" >&2
+      exit 2
+      ;;
+  esac
+' ufda-component-cli "$flake_root" "$worktree" "$mode" "$target" "$binary_path" "$caller_dir" "$nix_shim" "$bash_path" "$@"
