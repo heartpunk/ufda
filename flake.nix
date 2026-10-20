@@ -5,7 +5,7 @@
     ixyk.url = "github:heartpunk/ixyk/8db2a865adc76ec0e07b2421b14db3318581f58e";
     wruh.url = "github:heartpunk/wruh/03abf8bde75094d82aabd4789f18643656368d72";
     ayxg.url = "github:heartpunk/ayxg/c7bd6ecc08a570c5b4a67643dcd33fc6c461bfec";
-    utem.url = "github:heartpunk/utem/355c9f61b5cbae31807be633b7ffa66482915a83";
+    utem.url = "github:heartpunk/utem/c5a6e57884a9670fad05f47e3692f7e9e1b284b4";
   };
 
   outputs = inputs:
@@ -14,7 +14,7 @@
         ixyk = "8db2a865adc76ec0e07b2421b14db3318581f58e";
         wruh = "03abf8bde75094d82aabd4789f18643656368d72";
         ayxg = "c7bd6ecc08a570c5b4a67643dcd33fc6c461bfec";
-        utem = "355c9f61b5cbae31807be633b7ffa66482915a83";
+        utem = "c5a6e57884a9670fad05f47e3692f7e9e1b284b4";
       };
       sources = builtins.mapAttrs (_: source: toString source) {
         inherit (inputs) ixyk wruh ayxg utem;
