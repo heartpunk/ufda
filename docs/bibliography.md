@@ -46,7 +46,7 @@ The intended use is to explain UFDA, not reconstruct an influence history. Downl
 
 - [A Compositional Natural Semantics and Hoare Logic for Low-Level Languages](https://doi.org/10.1016/j.tcs.2006.12.020) — Roadmap support.
 
-- [Symbolic Execution of Constrained Horn Clauses](https://doi.org/10.48550/arXiv.2610.03345) — Roadmap support.
+- [Symbolic Execution of Constrained Horn Clauses](https://arxiv.org/abs/2610.03345) — Roadmap support.
 
 - [A Complete Formal Semantics of x86-64 User-Level Instruction Set Architecture](https://doi.org/10.1145/3314221.3314601) — Direct comparison.
 
