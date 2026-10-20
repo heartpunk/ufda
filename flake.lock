@@ -412,17 +412,17 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1792486191,
-        "narHash": "sha256-AYXzQqT9FidD0RRpXIxlfUm9EpjXMc9T8PmAyIb5GoY=",
+        "lastModified": 1792486440,
+        "narHash": "sha256-Gg/dY6zocWYmD2mXWLDpfufQWiPVOtIGnLDnU3dS2Yc=",
         "owner": "heartpunk",
         "repo": "ixyk",
-        "rev": "976482742bd97813f7fdebf34a595c78589a97dd",
+        "rev": "1e30ad86854d8445eb1b2cfb88cf55cb8e4e99d3",
         "type": "github"
       },
       "original": {
         "owner": "heartpunk",
         "repo": "ixyk",
-        "rev": "976482742bd97813f7fdebf34a595c78589a97dd",
+        "rev": "1e30ad86854d8445eb1b2cfb88cf55cb8e4e99d3",
         "type": "github"
       }
     },
