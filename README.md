@@ -82,4 +82,4 @@ On Linux, `nix develop --command bash tests/wruh-cli-smoke.sh` exercises both
 WRUH help commands, extracts a small compiled function, and composes the
 resulting bundle. It also checks relative paths containing spaces.
 
-[^name]: ufda only ended up being the name bcz something like umfa was generated as a shortcode and i was like teehee that's close to ufda which is like uff da and that made me decide to construct this white lie about having said uff da when i rly do not say such things i just grew up hearing about ppl saying it when my dad was a kid that is all
+[^name]: ufda only ended up being the name bcz something like umfa was generated as a shortcode and i was like teehee that's close to ufda which is like uff da and that made me decide to construct this white lie about having said uff da when i rly do not say such things i just grew up hearing about ppl saying it when my dad was a kid that is all. UPDATE slightly later same day: it is now a backronym. unspecified function describing automatons.
