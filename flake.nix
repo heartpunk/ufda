@@ -2,7 +2,7 @@
   description = "UFDA suite: pinned component sources and development commands";
 
   inputs = {
-    ixyk.url = "github:heartpunk/ixyk/94ea16f190c36ce4593a680d5ecaecc9dc417e60";
+    ixyk.url = "github:heartpunk/ixyk/8db2a865adc76ec0e07b2421b14db3318581f58e";
     wruh.url = "github:heartpunk/wruh/03abf8bde75094d82aabd4789f18643656368d72";
     ayxg.url = "github:heartpunk/ayxg/c7bd6ecc08a570c5b4a67643dcd33fc6c461bfec";
     utem.url = "github:heartpunk/utem/127f8e0b15329482b1bc5314eda30160887d20af";
@@ -11,7 +11,7 @@
   outputs = inputs:
     let
       pins = {
-        ixyk = "94ea16f190c36ce4593a680d5ecaecc9dc417e60";
+        ixyk = "8db2a865adc76ec0e07b2421b14db3318581f58e";
         wruh = "03abf8bde75094d82aabd4789f18643656368d72";
         ayxg = "c7bd6ecc08a570c5b4a67643dcd33fc6c461bfec";
         utem = "127f8e0b15329482b1bc5314eda30160887d20af";
