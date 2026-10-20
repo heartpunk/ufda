@@ -1,0 +1,12 @@
+{
+  "sources": [
+    "tests/dependency-pins.py"
+  ],
+  "tests": [
+    [
+      "tests/dependency-pins.py"
+    ]
+  ],
+  "mutation_sources": [],
+  "mutation_not_applicable": "UFDA contains a Python integration check but no Python implementation to mutate; tests are never mutation targets."
+}
