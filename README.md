@@ -40,10 +40,10 @@ These revisions align the component dependencies on one IFRL and AYXG revision.
 
 | Component | Commit | Selection on 2026-10-19 |
 | --- | --- | --- |
-| IXYK | `8db2a865adc76ec0e07b2421b14db3318581f58e` | PR #83 |
-| WRUH | `03abf8bde75094d82aabd4789f18643656368d72` | PR #3 |
-| AYXG | `c7bd6ecc08a570c5b4a67643dcd33fc6c461bfec` | PR #4 |
-| UTEM | `c5a6e57884a9670fad05f47e3692f7e9e1b284b4` | PR #1 |
+| IXYK | `66729541a3fe3fb3a3d0979510fa3f0fbc59873a` | PR #83 |
+| WRUH | `e9931eaf74199fb7c66d2b1609a7e8aa502ed659` | PR #3 |
+| AYXG | `ab2bee80d559b864ca512058b75db75e2052d357` | PR #4 |
+| UTEM | `6060b0c8a68e7be5ac2126cfc58e3cfac5e41197` | PR #1 |
 
 ## Commands
 
