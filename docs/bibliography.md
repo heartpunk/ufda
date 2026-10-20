@@ -126,7 +126,7 @@ The intended use is to explain UFDA, not reconstruct an influence history. Downl
 
 ## Interesting adjacent stuff
 
-- [Compositional Symbolic Execution for Correctness and Incorrectness Reasoning (Extended Version)](https://arxiv.org/abs/2407.10838). Separation-logic compositional execution is a plausible future bridge, but the concrete memory/specification interface to AYXG has not been established. Keep behind the two explicitly named Hoare papers.
+- [Compositional Symbolic Execution for Correctness and Incorrectness Reasoning (Extended Version)](https://arxiv.org/abs/2407.10838). Also available as an [ECOOP 2024 proceedings paper](https://doi.org/10.4230/LIPIcs.ECOOP.2024.25). Separation-logic compositional execution is a plausible future bridge, but the concrete memory/specification interface to AYXG has not been established. Keep behind the two explicitly named Hoare papers.
 
 - [Compositional Symbolic Execution for the Next 700 Memory Models](https://doi.org/10.1145/3763151). Memory-model-parametric symbolic execution may help compare semantic interfaces, but no specific UFDA dependency on this framework is established.
 
