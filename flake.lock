@@ -757,17 +757,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1792466078,
-        "narHash": "sha256-Kwv9dYc7EgSYpQz/sHDMHGH+LFpiM0zUcOqSQqqtHz8=",
+        "lastModified": 1792467190,
+        "narHash": "sha256-b2Ua7oUqgNAJl/bLLoQudPqd6SLKepgmmvLuz1AkIm8=",
         "owner": "heartpunk",
         "repo": "utem",
-        "rev": "355c9f61b5cbae31807be633b7ffa66482915a83",
+        "rev": "c5a6e57884a9670fad05f47e3692f7e9e1b284b4",
         "type": "github"
       },
       "original": {
         "owner": "heartpunk",
         "repo": "utem",
-        "rev": "355c9f61b5cbae31807be633b7ffa66482915a83",
+        "rev": "c5a6e57884a9670fad05f47e3692f7e9e1b284b4",
         "type": "github"
       }
     },
