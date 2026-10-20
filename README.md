@@ -43,7 +43,7 @@ These revisions align the component dependencies on one IFRL and AYXG revision.
 | IXYK | `8db2a865adc76ec0e07b2421b14db3318581f58e` | PR #83 |
 | WRUH | `03abf8bde75094d82aabd4789f18643656368d72` | PR #3 |
 | AYXG | `c7bd6ecc08a570c5b4a67643dcd33fc6c461bfec` | PR #4 |
-| UTEM | `127f8e0b15329482b1bc5314eda30160887d20af` | PR #1 |
+| UTEM | `355c9f61b5cbae31807be633b7ffa66482915a83` | PR #1 |
 
 ## Commands
 
