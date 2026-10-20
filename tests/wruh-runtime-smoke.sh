@@ -12,5 +12,5 @@ nix develop .#wruh --no-write-lock-file --command bash -euo pipefail -c '
 # Exercise the Bazel dependency graph through the same wrapper users run.
 nix develop --no-write-lock-file --command bazelw \
   --batch --host_jvm_args=-Xmx512m --host_jvm_args=-XX:ActiveProcessorCount=2 \
-  build --jobs=2 --loading_phase_threads=2 @shared_angr//:pkg
+  test --jobs=2 --loading_phase_threads=2 --test_output=errors //extractor:angr_runtime_smoke
 nix develop --no-write-lock-file --command bash tests/wruh-cli-smoke.sh
