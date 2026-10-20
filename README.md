@@ -1,4 +1,4 @@
-# UFDA
+# ufda: unspecified function describing automatons
 
 ## wat it is and why from da authors perspective
 
