@@ -1,6 +1,6 @@
 # UFDA bibliography and first ten readings
 
-**UFDA only: 47 retained readings, with a first ten.** Another 18 items are marked iffy and kept outside the recommendation. Retained readings comprise 12 foundations, 14 direct comparisons, and 21 optional roadmap-support readings.
+BibTeX / Zotero: [core](bibliography-core.bib) (the first ten), [extra](bibliography-extra.bib) (more readings), [misc adjacent](bibliography-misc-adjacent.bib) (interesting adjacent stuff).
 
 The intended use is to explain UFDA, not reconstruct an influence history. Downloads, abstract familiarity, and citation occurrence do not establish deep reading or adoption. Abstract interpretation is outside this reading set. Spoofax has one canonical citation and is explicitly familiar but unread.
 
@@ -26,9 +26,7 @@ The intended use is to explain UFDA, not reconstruct an influence history. Downl
 
 10. **Bettscheider, Zeller (2024). [Look Ma, No Input Samples! Mining Input Grammars from Code with Symbolic Parsing](https://doi.org/10.1145/3663529.3663790).** An actual inspiration for this work. Read for recovering structured input specifications from code through symbolic parsing.
 
-## Remaining retained readings
-
-These are alternatives, close comparisons, and optional support for specific roadmap work. They are not another mandatory reading list. The [BibTeX bibliography](bibliography.bib) contains all 47 retained readings and can also be imported into Zotero.
+## More Readings
 
 ### Symbolic execution and model correspondence
 
@@ -41,6 +39,10 @@ These are alternatives, close comparisons, and optional support for specific roa
 - [Symbolic execution formally explained](https://doi.org/10.1007/s00165-020-00527-y) — Present foundations.
 
 ### Specification targets and logical bridges
+
+- [Separation Logic: A Logic for Shared Mutable Data Structures](https://doi.org/10.1109/LICS.2002.1029817) — Reynolds (2002). Separation logic for reasoning about shared mutable data structures.
+
+- [Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers](https://lamport.org/tla/book.html) — Lamport (2002). The TLA+ specification language and tools.
 
 - [A Compositional Natural Semantics and Hoare Logic for Low-Level Languages](https://doi.org/10.1016/j.tcs.2006.12.020) — Roadmap support.
 
@@ -122,9 +124,7 @@ These are alternatives, close comparisons, and optional support for specific roa
 
 - [STADS: Software Testing as Species Discovery](https://doi.org/10.1145/3210309) — Roadmap support.
 
-## Iffy and outside the recommendation
-
-These candidates need a stronger UFDA connection or a resolved citation before promotion.
+## Interesting adjacent stuff
 
 - [Compositional Symbolic Execution for Correctness and Incorrectness Reasoning (Extended Version)](https://doi.org/10.4230/LIPIcs.ECOOP.2024.25). Separation-logic compositional execution is a plausible future bridge, but the concrete memory/specification interface to AYXG has not been established. Keep behind the two explicitly named Hoare papers.
 
@@ -162,20 +162,8 @@ These candidates need a stronger UFDA connection or a resolved citation before p
 
 - [Symbolic Register Automata](https://doi.org/10.1007/978-3-030-25540-4_1). Defines symbolic register automata and algorithms for emptiness, inclusion, and equivalence. Compatibility of its register discipline and transition restrictions with AYXG has not been established; shared symbolic-state vocabulary alone is insufficient.
 
-## What was removed
-
-Of the 376 original records: 47 are retained, 18 are iffy, 292 are excluded from the UFDA reading pool, 9 are alternative editions or overlapping readings, 9 are implementation or background references, and 1 is the author’s own work. Exclusion means no sufficiently specific role in this reading assignment; it does not mean the paper is unfamiliar or unimportant.
-
-The broad abstract-interpretation, distributed-consistency, general automata-learning, and historical specification-mining strands no longer drive the recommendation. A citation in an earlier draft is not enough to retain an otherwise peripheral paper.
-
-## Small citation gaps
-
-For the already named separation-logic and TLA+ bridges, consider a single canonical citation each: [Reynolds 2002](https://www.cs.cmu.edu/~jcr/seplogic.pdf) and [Lamport’s Specifying Systems](https://lamport.org/tla/book.html?back-link=learning.html). These are outside the 47 and are options to consider, not assumed influences.
-
 ## Scope and source snapshot
 
 The assessment follows [UFDA’s roadmap at acb7ce97f5cbda1dfb07ff335e47a0e86186ae79](https://github.com/heartpunk/ufda/blob/acb7ce97f5cbda1dfb07ff335e47a0e86186ae79/docs/roadmap.md), checked on 19 October 2026, and the [Bluesky thread](https://bsky.app/profile/heartpunk.com/post/3my5zgvy6mt2s). Current foundations and future directions are kept separate.
 
-The anti-unification readings are grounded in the [IXYK instruction-schema and anti-unification components](https://github.com/heartpunk/ixyk/blob/b6779bb0ed4354c820fb831be1f4402170a0e5d1/README.md#L164-L170), at the revision pinned by UFDA. Plotkin and the survey are [explicitly cited there](https://github.com/heartpunk/ixyk/blob/b6779bb0ed4354c820fb831be1f4402170a0e5d1/README.md#L219-L220).
-
-The accompanying [BibTeX bibliography](bibliography.bib) contains the 47 retained readings, including the first ten. The iffy candidates and citation-gap suggestions remain outside that export. Scope assessment used project evidence, metadata, and available paper descriptions; it was not a full-text review of every candidate.
+The anti-unification readings are grounded in the [IXYK instruction-schema and anti-unification components](https://github.com/heartpunk/ixyk/blob/b6779bb0ed4354c820fb831be1f4402170a0e5d1/README.md#L164-L170), at the revision pinned by UFDA, and other repos that will soon join ufda but need a lil more work first. Plotkin and the survey are [explicitly cited in IXYK](https://github.com/heartpunk/ixyk/blob/b6779bb0ed4354c820fb831be1f4402170a0e5d1/README.md#L219-L220).
