@@ -2,19 +2,19 @@
   description = "UFDA suite: pinned component sources and development commands";
 
   inputs = {
-    ixyk.url = "github:heartpunk/ixyk/1e30ad86854d8445eb1b2cfb88cf55cb8e4e99d3";
-    wruh.url = "github:heartpunk/wruh/840ec2b8f04849a00752e8335dcf008a103831f5";
-    ayxg.url = "github:heartpunk/ayxg/885e5d86ba5ef606aa65e81cbfaecaa98770f2df";
-    utem.url = "github:heartpunk/utem/4d77dc34b9c51101f669d2fe31739792fbc132fb";
+    ixyk.url = "github:heartpunk/ixyk/698417e5628200ef6f669afec44e1181b9935617";
+    wruh.url = "github:heartpunk/wruh/cb2a7709e8e5414f6a6ef7ec30c0bcb2199e5c36";
+    ayxg.url = "github:heartpunk/ayxg/c8eb84b0803ce37c2419c20fd241b1977f2b911a";
+    utem.url = "github:heartpunk/utem/650fb920d010a11d546cfbc57912255cc240a355";
   };
 
   outputs = inputs:
     let
       pins = {
-        ixyk = "1e30ad86854d8445eb1b2cfb88cf55cb8e4e99d3";
-        wruh = "840ec2b8f04849a00752e8335dcf008a103831f5";
-        ayxg = "885e5d86ba5ef606aa65e81cbfaecaa98770f2df";
-        utem = "4d77dc34b9c51101f669d2fe31739792fbc132fb";
+        ixyk = "698417e5628200ef6f669afec44e1181b9935617";
+        wruh = "cb2a7709e8e5414f6a6ef7ec30c0bcb2199e5c36";
+        ayxg = "c8eb84b0803ce37c2419c20fd241b1977f2b911a";
+        utem = "650fb920d010a11d546cfbc57912255cc240a355";
       };
       sources = builtins.mapAttrs (_: source: toString source) {
         inherit (inputs) ixyk wruh ayxg utem;
