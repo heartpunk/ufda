@@ -36,14 +36,14 @@ Use `nix develop .#wruh` (or another component name) to enter that shell directl
 
 All direct source inputs are pinned to full commit SHAs; advancing a branch or
 bookmark does not change these selections.
-AYXG and WRUH select the existing bisimulation PR heads.
+These revisions align the component dependencies on one IFRL and AYXG revision.
 
 | Component | Commit | Selection on 2026-10-19 |
 | --- | --- | --- |
-| IXYK | `b6779bb0ed4354c820fb831be1f4402170a0e5d1` | main tip |
-| WRUH | `16d77877512d97fad0622a7a6ac401cf8b2dd538` | PR #2 |
-| AYXG | `5106df06d92620da810c325b8779ce97a14f7f0e` | PR #1 |
-| UTEM | `88efa92e1fe4c0553f8eba43dec198b19ebdeb31` | main tip |
+| IXYK | `94ea16f190c36ce4593a680d5ecaecc9dc417e60` | PR #83 |
+| WRUH | `17e7f1a16a6ddca91a93f8a4c121d8952aeae140` | PR #3 |
+| AYXG | `c7bd6ecc08a570c5b4a67643dcd33fc6c461bfec` | PR #4 |
+| UTEM | `0cc1f5e76d1366eeabb988989c35718b20095cb6` | PR #1 |
 
 ## Commands
 
@@ -71,8 +71,7 @@ The separate `extract_model` command runs IXYK's Bazel target of that name.
 
 ## Repository access
 
-UFDA and UTEM are currently private. UTEM is fetched over SSH
-at its pinned commit; using the suite requires GitHub access to UTEM.
+All pinned component repositories are public and fetched over HTTPS.
 
 ## Checks
 
