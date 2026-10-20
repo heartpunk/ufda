@@ -16,6 +16,8 @@ anyway the stuff in the ufda "suite" (rly just a repo that pins a few other repo
 
 tl;dr: ufda plus some other planned stuff in the [roadmap](docs/roadmap.md) should, i think, in principle, *i hope*, be enough to get us all the way to first class and eventually even high level semantics for p much everything, even when we only have low level implementations.
 
+if u want the reading list, there’s a [bibliography](docs/bibliography.md) w/a first ten and the rest grouped by what they’re useful for.
+
 ## boring ai slop. factually useful context but. like. up to u if u want that?
 
 The UFDA suite brings together IXYK, WRUH, AYXG, and UTEM with pinned
