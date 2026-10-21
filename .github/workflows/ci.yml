@@ -25,6 +25,26 @@ jobs:
           github_access_token: ${{ github.token }}
           extra_nix_config: |
             accept-flake-config = true
+      - uses: cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866 # v17
+        with:
+          name: ufda
+          extraPullNames: ifrl,ayxg,wruh,ixyk,utem
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Require Cachix write token for repository builds
+        if: >-
+          (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+          (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        run: |
+          if [[ -z "$CACHIX_AUTH_TOKEN" ]]; then
+            echo '::error::CACHIX_AUTH_TOKEN is required to publish the UFDA cache.'
+            exit 1
+          fi
+      - name: Use HTTPS for public GitHub flake inputs
+        run: |
+          git config --global --add url.https://github.com/.insteadOf ssh://git@github.com/
+          git config --global --add url.https://github.com/.insteadOf git@github.com:
       - name: Evaluate the pinned Nix flake
         run: nix flake check --no-build --no-write-lock-file
       - name: Check dependency agreement
@@ -34,5 +54,11 @@ jobs:
 
       - name: Run the component CLI contract test
         run: bash tests/component-cli-contract.sh
+      - name: Build the UFDA and component development shells
+        run: |
+          set -euo pipefail
+          for shell in default ixyk wruh ayxg utem; do
+            nix develop ".#$shell" --no-write-lock-file --command true
+          done
       - name: Check WRUH runtime, Bazel dependencies, and extraction commands
         run: bash tests/wruh-runtime-smoke.sh
