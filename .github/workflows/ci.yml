@@ -42,7 +42,7 @@ jobs:
           printf 'GIT_SSH_COMMAND=ssh -F /dev/null -i "%s" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="%s"\n' \
             "$RUNNER_TEMP/utem-ssh/id_ed25519" "$RUNNER_TEMP/utem-ssh/known_hosts" >> "$GITHUB_ENV"
       - name: Evaluate the pinned Nix flake
-        run: nix flake check --no-build --no-write-lock-file
+        run: nix flake check --no-write-lock-file
       - name: Check shell source syntax
         run: bash -n scripts/component-cli tests/component-cli-contract.sh
 
