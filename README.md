@@ -32,6 +32,12 @@ its component's own development shell.
 Use `nix develop .#wruh` (or another component name) to enter that shell directly.
 `nix eval --json .#lib.pins` prints the selected component revisions.
 
+## Components
+
+- IXYK — Extracts and validates instruction-level symbolic models.
+- WRUH — Extracts binary models into AYXG symbolic transition systems.
+- AYXG — Provides the symbolic transition system model and execution library.
+- UTEM — Specializes programs through AYXG models.
 
 ## Commands
 
