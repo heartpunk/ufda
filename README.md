@@ -32,18 +32,12 @@ its component's own development shell.
 Use `nix develop .#wruh` (or another component name) to enter that shell directly.
 `nix eval --json .#lib.pins` prints the selected component revisions.
 
-## Pins
+## Components
 
-All direct source inputs are pinned to full commit SHAs; advancing a branch or
-bookmark does not change these selections.
-AYXG and WRUH select the existing bisimulation PR heads.
-
-| Component | Commit | Selection on 2026-10-19 |
-| --- | --- | --- |
-| IXYK | `b6779bb0ed4354c820fb831be1f4402170a0e5d1` | main tip |
-| WRUH | `16d77877512d97fad0622a7a6ac401cf8b2dd538` | PR #2 |
-| AYXG | `5106df06d92620da810c325b8779ce97a14f7f0e` | PR #1 |
-| UTEM | `88efa92e1fe4c0553f8eba43dec198b19ebdeb31` | main tip |
+- IXYK — Extracts and validates instruction-level symbolic models.
+- WRUH — Extracts binary models into AYXG symbolic transition systems.
+- AYXG — Provides the symbolic transition system model and execution library.
+- UTEM — Specializes programs through AYXG models.
 
 ## Commands
 
