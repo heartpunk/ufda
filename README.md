@@ -65,8 +65,7 @@ The separate `extract_model` command runs IXYK's Bazel target of that name.
 
 ## Repository access
 
-UFDA and UTEM are currently private. UTEM is fetched over SSH
-at its pinned commit; using the suite requires GitHub access to UTEM.
+All pinned component repositories are public and fetched over HTTPS.
 
 ## Checks
 

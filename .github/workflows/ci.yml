@@ -15,7 +15,7 @@ concurrency:
 jobs:
   checks:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -25,29 +25,14 @@ jobs:
           github_access_token: ${{ github.token }}
           extra_nix_config: |
             accept-flake-config = true
-      - name: Configure read-only access to UTEM
-        env:
-          UTEM_DEPLOY_KEY: ${{ secrets.UTEM_DEPLOY_KEY }}
-        run: |
-          if [[ -z "$UTEM_DEPLOY_KEY" ]]; then
-            echo '::error::UTEM_DEPLOY_KEY is required while UTEM is private.'
-            exit 1
-          fi
-          umask 077
-          mkdir -p "$RUNNER_TEMP/utem-ssh"
-          printf '%s\n' "$UTEM_DEPLOY_KEY" > "$RUNNER_TEMP/utem-ssh/id_ed25519"
-          # GitHub's published Ed25519 host key; keep host verification enabled.
-          printf '%s\n' 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' \
-            > "$RUNNER_TEMP/utem-ssh/known_hosts"
-          printf 'GIT_SSH_COMMAND=ssh -F /dev/null -i "%s" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="%s"\n' \
-            "$RUNNER_TEMP/utem-ssh/id_ed25519" "$RUNNER_TEMP/utem-ssh/known_hosts" >> "$GITHUB_ENV"
       - name: Evaluate the pinned Nix flake
         run: nix flake check --no-build --no-write-lock-file
+      - name: Check dependency agreement
+        run: python3 tests/dependency-pins.py
       - name: Check shell source syntax
         run: bash -n scripts/component-cli tests/component-cli-contract.sh
 
       - name: Run the component CLI contract test
         run: bash tests/component-cli-contract.sh
-      - name: Remove temporary UTEM credentials
-        if: always()
-        run: rm -rf "$RUNNER_TEMP/utem-ssh"
+      - name: Check WRUH runtime, Bazel dependencies, and extraction commands
+        run: bash tests/wruh-runtime-smoke.sh
