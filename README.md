@@ -71,8 +71,8 @@ at its pinned commit; using the suite requires GitHub access to UTEM.
 ## Checks
 
 Run `bash tests/component-cli-contract.sh` for the existing wrapper behavior
-checks, and `nix flake check --no-build --no-write-lock-file` to evaluate the
-suite. These cover wrapper behavior and flake evaluation.
+checks, and `nix flake check --no-write-lock-file` to evaluate the suite. These
+cover wrapper behavior and flake evaluation.
 
 On Linux, `nix develop --command bash tests/wruh-cli-smoke.sh` exercises both
 WRUH help commands, extracts a small compiled function, and composes the
