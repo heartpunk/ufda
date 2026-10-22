@@ -13,5 +13,5 @@ jobs:
     uses: heartpunk/ifrl/.github/workflows/suite-baselines.yml@main
     with:
       baseline-ref: main
-      python-nix-shell: ''
+      python-nix-shell: .ifrl-ci
       lean-nix-shell: ''
