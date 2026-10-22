@@ -117,8 +117,8 @@
       },
       "original": {
         "owner": "heartpunk",
+        "ref": "main",
         "repo": "ayxg",
-        "rev": "607e482f4f6ff846cf213971ab958f466df901b2",
         "type": "github"
       }
     },
@@ -421,8 +421,8 @@
       },
       "original": {
         "owner": "heartpunk",
+        "ref": "main",
         "repo": "ixyk",
-        "rev": "9a8a90e942fc6c287a1b35fb9316a56f52211bb9",
         "type": "github"
       }
     },
@@ -766,8 +766,8 @@
       },
       "original": {
         "owner": "heartpunk",
+        "ref": "main",
         "repo": "utem",
-        "rev": "a0f793d9b3154e09d57d0a0ad313a23099c90cf4",
         "type": "github"
       }
     },
@@ -791,8 +791,8 @@
       },
       "original": {
         "owner": "heartpunk",
+        "ref": "main",
         "repo": "wruh",
-        "rev": "3cf9a80d71bd488ef0bf20177aac49a27021116f",
         "type": "github"
       }
     }
