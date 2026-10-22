@@ -1,3 +1,10 @@
 .dependencies/
 result
 result-*
+
+# Disposable CI output and shared baseline checkout.
+ci-reports/
+ci-mutation-cache/
+.ifrl-ci/
+__pycache__/
+.pytest_cache/
