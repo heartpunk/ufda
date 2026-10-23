@@ -2,8 +2,8 @@
 	- [ayxg](https://github.com/heartpunk/ayxg): symbolic transition system datatype and execution library in python and lean.
 	- [wruh](https://github.com/heartpunk/wruh): extracts models of binaries into ayxg STSes.
 	- [utem](https://github.com/heartpunk/utem): specializes fixed code or workload data through an ayxg model of an interpreter, compiler, vm, or kernel. a reference first futamura projector is implemented and proved correct in lean.
-	-  fyxo: an intended near term counterexample guided repair tool for ayxg STSes.
-	- [tmvm](https://github.com/heartpunk/tmvm): a toy isa repo we (could in principle) use for some examples
+	- fyxo: an intended near term counterexample guided repair tool for ayxg STSes.
+	- tmvm: a toy isa repo we (could in principle) use for some examples (private for now, will be public when it's needed; probs soon for a demo)
 - overall, there's a few themes:
 	- make it easier to prove anything for any system we can model
 	- lift our specs off of dependence on compiled binaries
